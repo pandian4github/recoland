@@ -1,4 +1,4 @@
-package com.housing.recoland.utils;
+package com.housing.recoland.service.utils;
 
 import java.util.List;
 import java.util.Set;

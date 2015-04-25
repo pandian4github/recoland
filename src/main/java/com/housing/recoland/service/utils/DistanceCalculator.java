@@ -1,4 +1,4 @@
-package com.housing.recoland.utils;
+package com.housing.recoland.service.utils;
 
 /**
  * Created by pandian.raju on 25/04/15.

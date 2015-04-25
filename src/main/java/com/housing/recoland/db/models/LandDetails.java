@@ -8,6 +8,7 @@ public class LandDetails {
     private Double longitude;
     private String areaName;
     private Double area;
+    private Double distance;
 
     public LandDetails() {
     }
@@ -17,6 +18,14 @@ public class LandDetails {
         this.longitude = longitude;
         this.areaName = areaName;
         this.area = area;
+    }
+
+    public LandDetails(Double latitude, Double longitude, String areaName, Double area, Double distance) {
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.areaName = areaName;
+        this.area = area;
+        this.distance = distance;
     }
 
     public Double getLatitude() {
@@ -49,5 +58,13 @@ public class LandDetails {
 
     public void setArea(Double area) {
         this.area = area;
+    }
+
+    public Double getDistance() {
+        return distance;
+    }
+
+    public void setDistance(Double distance) {
+        this.distance = distance;
     }
 }
