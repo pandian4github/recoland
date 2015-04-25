@@ -8,6 +8,7 @@ public class HotelDetails {
     private Double longitude;
     private String cuisineType;
     private Double rating;
+    private Double distance;
 
     public HotelDetails() {
     }
@@ -17,6 +18,14 @@ public class HotelDetails {
         this.longitude = longitude;
         this.cuisineType = cuisineType;
         this.rating = rating;
+    }
+
+    public HotelDetails(Double latitude, Double longitude, String cuisineType, Double rating, Double distance) {
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.cuisineType = cuisineType;
+        this.rating = rating;
+        this.distance = distance;
     }
 
     public Double getLatitude() {
@@ -49,5 +58,13 @@ public class HotelDetails {
 
     public void setRating(Double rating) {
         this.rating = rating;
+    }
+
+    public Double getDistance() {
+        return distance;
+    }
+
+    public void setDistance(Double distance) {
+        this.distance = distance;
     }
 }
