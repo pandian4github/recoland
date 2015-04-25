@@ -19,19 +19,16 @@ import java.util.*;
  * Created by pandian.raju on 25/04/15.
  */
 public class RecoLandService {
-    public static void main(String[] args) throws SQLException, ClassNotFoundException {
-//        String userName = args[0];
-        String userName = "pandian";
-
+    public static String getRecommendedLands(String username) throws SQLException, ClassNotFoundException {
         Set<LandDetails> landDetailsList = Sets.newHashSet();
-        for (BrowseHistory browseHistory : DBUtils.getBrowseHistory(userName)) {
+        for (BrowseHistory browseHistory : DBUtils.getBrowseHistory(username)) {
             landDetailsList.addAll(LandDetailsUtils.getClosestLandDetails(browseHistory.getLatitude(),
                     browseHistory.getLongitude()));
         }
 
-        List<FoodHistory> foodHistoryList = DBUtils.getFoodHistory(userName);
-        List<MovieHistory> movieHistoryList = DBUtils.getMovieHistory(userName);
-        List<BrowseHistory> browseHistoryList = DBUtils.getBrowseHistory(userName);
+        List<FoodHistory> foodHistoryList = DBUtils.getFoodHistory(username);
+        List<MovieHistory> movieHistoryList = DBUtils.getMovieHistory(username);
+        List<BrowseHistory> browseHistoryList = DBUtils.getBrowseHistory(username);
         List<HotelDetails> allHotelDetailsList = DBUtils.getHotelDetails();
         List<TheaterDetails> allTheaterDetailsList = DBUtils.getTheaterDetails();
 
@@ -114,7 +111,7 @@ public class RecoLandService {
         responseMap.put("hotels", allHotelDetailsList);
         responseMap.put("theaters", allTheaterDetailsList);
         responseMap.put("recommendedLands", recommendedLands);
-        System.out.println(JsonUtils.DEFAULT.toJson(responseMap));
+        return JsonUtils.DEFAULT.toJson(responseMap);
     }
 
 }
