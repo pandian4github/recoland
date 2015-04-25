@@ -3,6 +3,7 @@ package com.housing.recoland.service.utils;
 import java.util.List;
 import java.util.Set;
 
+import com.housing.recoland.beans.LatLong;
 import com.housing.recoland.db.models.HotelDetails;
 import com.housing.recoland.db.models.LandDetails;
 import com.housing.recoland.db.models.TheaterDetails;
@@ -45,5 +46,14 @@ public class RatingCalculator {
         }
         double averageScore = score / theaterCount;
         return (averageScore / 100) * 3;
+    }
+    
+    public static double getInterestedPlacesRating(List<LatLong> latLongList){
+    	double score = 0;
+    	for(LatLong latLong: latLongList){
+    		
+    	}
+    	
+    	return 0;
     }
 }
