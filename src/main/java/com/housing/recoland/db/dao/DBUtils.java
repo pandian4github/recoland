@@ -96,7 +96,7 @@ public class DBUtils {
         List<HotelDetails> hotelDetails = Lists.newArrayList();
         while (rs.next()) {
             hotelDetails.add(new HotelDetails(rs.getDouble(LATITUDE), rs.getDouble(LONGITUDE), rs.getString(CUISINE_TYPE),
-                    rs.getDouble(RATING)));
+                    rs.getDouble(RATING), rs.getString("name")));
         }
         return hotelDetails;
     }
@@ -111,7 +111,7 @@ public class DBUtils {
         List<TheaterDetails> theaterDetails = Lists.newArrayList();
         while (rs.next()) {
             theaterDetails.add(new TheaterDetails(rs.getDouble(LATITUDE), rs.getDouble(LONGITUDE), rs.getString(MOVIE_LANGUAGE),
-                    rs.getDouble(RATING)));
+                    rs.getDouble(RATING), rs.getString("name")));
         }
         return theaterDetails;
     }

@@ -9,6 +9,7 @@ public class TheaterDetails {
     private String movieType;
     private Double rating;
     private Double distance;
+    private String name;
 
     public TheaterDetails() {
     }
@@ -26,6 +27,23 @@ public class TheaterDetails {
         this.movieType = movieType;
         this.rating = rating;
         this.distance = distance;
+    }
+
+    public TheaterDetails(Double latitude, Double longitude, String movieType, Double rating, String name) {
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.movieType = movieType;
+        this.rating = rating;
+        this.name = name;
+    }
+
+    public TheaterDetails(Double latitude, Double longitude, String movieType, Double rating, Double distance, String name) {
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.movieType = movieType;
+        this.rating = rating;
+        this.distance = distance;
+        this.name = name;
     }
 
     public Double getLatitude() {
@@ -66,5 +84,13 @@ public class TheaterDetails {
 
     public void setDistance(Double distance) {
         this.distance = distance;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

@@ -22,9 +22,9 @@ public class LandDetailsUtils {
         Collections.sort(allLandDetails, new Comparator<LandDetails>() {
             @Override
             public int compare(LandDetails o1, LandDetails o2) {
-                return  ((o1.getDistance() < o2.getDistance()) ? 1 : 0);
+                return  o1.getDistance().compareTo(o2.getDistance());
             }
         });
-        return allLandDetails.subList(0, 5);
+        return allLandDetails.subList(0, Math.min(allLandDetails.size(), 5));
     }
 }

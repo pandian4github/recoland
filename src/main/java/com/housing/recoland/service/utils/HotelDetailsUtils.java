@@ -23,9 +23,9 @@ public class HotelDetailsUtils {
         Collections.sort(allHotelDetails, new Comparator<HotelDetails>() {
             @Override
             public int compare(HotelDetails o1, HotelDetails o2) {
-                return ((o1.getDistance() < o2.getDistance()) ? 1 : 0);
+                return o1.getDistance().compareTo(o2.getDistance());
             }
         });
-        return allHotelDetails.subList(0, 5);
+        return allHotelDetails.subList(0, Math.min(allHotelDetails.size(), 5));
     }
 }

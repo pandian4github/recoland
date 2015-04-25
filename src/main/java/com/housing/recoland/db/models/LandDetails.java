@@ -67,4 +67,19 @@ public class LandDetails {
     public void setDistance(Double distance) {
         this.distance = distance;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof LandDetails) {
+            LandDetails ld = (LandDetails) obj;
+            return ld.area.equals(area) && ld.areaName.equals(areaName) && ld.latitude.equals(latitude)
+                    && ld.longitude.equals(longitude);
+        }
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return latitude.hashCode() + longitude.hashCode() + area.hashCode() + areaName.hashCode();
+    }
 }

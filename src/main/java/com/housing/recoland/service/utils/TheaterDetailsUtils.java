@@ -23,9 +23,9 @@ public class TheaterDetailsUtils {
         Collections.sort(allTheaterDetails, new Comparator<TheaterDetails>() {
             @Override
             public int compare(TheaterDetails o1, TheaterDetails o2) {
-                return ((o1.getDistance() < o2.getDistance()) ? 1 : 0);
+                return o1.getDistance().compareTo(o2.getDistance());
             }
         });
-        return allTheaterDetails.subList(0, 5);
+        return allTheaterDetails.subList(0, Math.min(allTheaterDetails.size(), 5));
     }
 }
