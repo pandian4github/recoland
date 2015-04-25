@@ -9,6 +9,7 @@ public class BrowseHistory {
     private Double longitude;
     private Double searchLatitude;
     private Double searchLongitude;
+    private String searchLocationName;
 
     public BrowseHistory() {
     }
@@ -19,6 +20,15 @@ public class BrowseHistory {
         this.longitude = longitude;
         this.searchLatitude = searchLatitude;
         this.searchLongitude = searchLongitude;
+    }
+
+    public BrowseHistory(String username, Double latitude, Double longitude, Double searchLatitude, Double searchLongitude, String searchLocationName) {
+        this.username = username;
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.searchLatitude = searchLatitude;
+        this.searchLongitude = searchLongitude;
+        this.searchLocationName = searchLocationName;
     }
 
     public String getUsername() {
@@ -59,5 +69,13 @@ public class BrowseHistory {
 
     public void setSearchLongitude(Double searchLongitude) {
         this.searchLongitude = searchLongitude;
+    }
+
+    public String getSearchLocationName() {
+        return searchLocationName;
+    }
+
+    public void setSearchLocationName(String searchLocationName) {
+        this.searchLocationName = searchLocationName;
     }
 }
