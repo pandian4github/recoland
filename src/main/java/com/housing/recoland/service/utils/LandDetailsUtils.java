@@ -12,7 +12,8 @@ import java.util.List;
  * Created by pandian.raju on 25/04/15.
  */
 public class LandDetailsUtils {
-    public static List<LandDetails> getClosestLandDetails(Double latitude, Double longitude) throws SQLException, ClassNotFoundException {
+    public static List<LandDetails> getClosestLandDetails(Double latitude, Double longitude)
+            throws SQLException, ClassNotFoundException {
         List<LandDetails> allLandDetails = DBUtils.getLandDetails();
         for (LandDetails landDetails : allLandDetails) {
             landDetails.setDistance(DistanceCalculator.getDistance(landDetails.getLatitude(),
@@ -24,6 +25,6 @@ public class LandDetailsUtils {
                 return  ((o1.getDistance() < o2.getDistance()) ? 1 : 0);
             }
         });
-        return allLandDetails;
+        return allLandDetails.subList(0, 5);
     }
 }
