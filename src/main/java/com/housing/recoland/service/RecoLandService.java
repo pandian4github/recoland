@@ -65,7 +65,7 @@ public class RecoLandService {
             for (BrowseHistory browseHistory : browseHistoryList) {
                 latLongs.add(new LatLong(browseHistory.getSearchLatitude(), browseHistory.getLongitude()));
             }
-//            score += RatingCalculator.getInterestedPlacesRating(latLongs, landDetails.getLatitude(), landDetails.getLongitude());
+            score += RatingCalculator.getInterestedPlacesRating(latLongs, landDetails);
 
             //Set hotel list
             for (HotelDetails hotelDetails : hotelDetailsList) {

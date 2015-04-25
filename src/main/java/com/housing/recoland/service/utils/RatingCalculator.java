@@ -47,13 +47,15 @@ public class RatingCalculator {
         double averageScore = score / theaterCount;
         return (averageScore / 100) * 3;
     }
-    
-    public static double getInterestedPlacesRating(List<LatLong> latLongList){
-    	double score = 0;
-    	for(LatLong latLong: latLongList){
-    		
-    	}
-    	
-    	return 0;
-    }
-}
+
+    public static double getInterestedPlacesRating(Set<LatLong> latLongList,LandDetails land){
+        double score = 0;
+        for(LatLong latLong: latLongList){
+            score+=getDistanceScore(DistanceCalculator.getDistance(latLong.latitude, latLong.longitude, land.getLatitude(),
+                    land.getLongitude()));
+        }
+        score *= 2;
+        score /= latLongList.size();
+
+        return (score / 100) * 4;
+    }}
