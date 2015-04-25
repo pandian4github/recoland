@@ -17,6 +17,7 @@ public class DBUtils {
     public static String LONGITUDE = "longitude";
     public static String SEARCH_LATITUDE = "search_latitude";
     public static String SEARCH_LONGITUDE = "search_longitude";
+    public static String SEARCH_LOCATION_NAME = "search_location_name";
     public static String ORDERED_AT = "ordered_at";
     public static String CUISINE_TYPE = "cuisine_type";
     public static String BOOKED_AT = "booked_at";
@@ -33,7 +34,7 @@ public class DBUtils {
         List<BrowseHistory> browseHistories = Lists.newArrayList();
         while (rs.next()) {
             browseHistories.add(new BrowseHistory(rs.getString(USERNAME), rs.getDouble(LATITUDE), rs.getDouble(LONGITUDE),
-                    rs.getDouble(SEARCH_LATITUDE), rs.getDouble(SEARCH_LONGITUDE)));
+                    rs.getDouble(SEARCH_LATITUDE), rs.getDouble(SEARCH_LONGITUDE), rs.getString(SEARCH_LOCATION_NAME)));
         }
         return browseHistories;
     }
