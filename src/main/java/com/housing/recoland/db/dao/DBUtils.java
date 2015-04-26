@@ -36,6 +36,7 @@ public class DBUtils {
             browseHistories.add(new BrowseHistory(rs.getString(USERNAME), rs.getDouble(LATITUDE), rs.getDouble(LONGITUDE),
                     rs.getDouble(SEARCH_LATITUDE), rs.getDouble(SEARCH_LONGITUDE), rs.getString(SEARCH_LOCATION_NAME)));
         }
+        conn.close();
         return browseHistories;
     }
 
@@ -50,8 +51,8 @@ public class DBUtils {
         while (rs.next()) {
             foodHistories.add(new FoodHistory(rs.getString(USERNAME), rs.getDate(ORDERED_AT), rs.getString(CUISINE_TYPE)));
         }
+        conn.close();
         return foodHistories;
-
     }
 
     public static List<MovieHistory> getMovieHistory(String username) throws SQLException, ClassNotFoundException {
@@ -66,6 +67,7 @@ public class DBUtils {
             movieHistories.add(new MovieHistory(rs.getString(USERNAME), rs.getDate(BOOKED_AT),
                     rs.getString(MOVIE_LANGUAGE)));
         }
+        conn.close();
         return movieHistories;
 
     }
@@ -82,6 +84,7 @@ public class DBUtils {
             geoHistories.add(new GeoHistory(rs.getString(USERNAME), rs.getDouble(LATITUDE), rs.getDouble(LONGITUDE),
                     rs.getString("location"), rs.getString("location_type")));
         }
+        conn.close();
         return geoHistories;
 
     }
@@ -98,6 +101,7 @@ public class DBUtils {
             hotelDetails.add(new HotelDetails(rs.getDouble(LATITUDE), rs.getDouble(LONGITUDE), rs.getString(CUISINE_TYPE),
                     rs.getDouble(RATING), rs.getString("name")));
         }
+        conn.close();
         return hotelDetails;
     }
 
@@ -113,6 +117,7 @@ public class DBUtils {
             theaterDetails.add(new TheaterDetails(rs.getDouble(LATITUDE), rs.getDouble(LONGITUDE), rs.getString(MOVIE_LANGUAGE),
                     rs.getDouble(RATING), rs.getString("name")));
         }
+        conn.close();
         return theaterDetails;
     }
 
@@ -128,6 +133,7 @@ public class DBUtils {
             landDetails.add(new LandDetails(rs.getDouble(LATITUDE), rs.getDouble(LONGITUDE), rs.getString("area_name"),
                     rs.getDouble("area")));
         }
+        conn.close();
         return landDetails;
     }
 
@@ -143,12 +149,7 @@ public class DBUtils {
             userRatings.add(new UserRating(rs.getString("username"), rs.getDouble("latitude"),
                     rs.getDouble("longitude"), rs.getDouble("rating")));
         }
+        conn.close();
         return userRatings;
     }
-
-
-    public static void main(String[] args) throws SQLException, ClassNotFoundException {
-        System.out.println(JsonUtils.DEFAULT.toJson(getBrowseHistory("pandian")));
-    }
-
 }
