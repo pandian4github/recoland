@@ -67,6 +67,9 @@ public class RecoLandService {
             }
             score += RatingCalculator.getInterestedPlacesRating(latLongs, landDetails);
 
+            Double userRating = RatingCalculator.getUserRating(DBUtils.getUserRatings(), landDetails);
+            score += userRating;
+
             //Set hotel list
             List<HotelDetails> newHotelDetailsList = Lists.newArrayList();
             for (HotelDetails hotelDetails : hotelDetailsList) {
@@ -98,7 +101,7 @@ public class RecoLandService {
             }
 
             recommendedLands.add(new RecommendedLand(landDetails, score, geoLocationDists, newHotelDetailsList,
-                    newTheaterDetailsList));
+                    newTheaterDetailsList, userRating));
         }
         Collections.sort(recommendedLands, new Comparator<RecommendedLand>() {
             @Override

@@ -131,6 +131,21 @@ public class DBUtils {
         return landDetails;
     }
 
+    public static List<UserRating> getUserRatings() throws SQLException, ClassNotFoundException {
+        Class.forName("com.mysql.jdbc.Driver") ;
+        Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/recoland", "land", "land") ;
+        Statement stmt = conn.createStatement() ;
+        String query = "select * from `user_rating`;" ;
+        ResultSet rs = stmt.executeQuery(query) ;
+
+        List<UserRating> userRatings = Lists.newArrayList();
+        while (rs.next()) {
+            userRatings.add(new UserRating(rs.getString("username"), rs.getDouble("latitude"),
+                    rs.getDouble("longitude"), rs.getDouble("rating")));
+        }
+        return userRatings;
+    }
+
 
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
         System.out.println(JsonUtils.DEFAULT.toJson(getBrowseHistory("pandian")));

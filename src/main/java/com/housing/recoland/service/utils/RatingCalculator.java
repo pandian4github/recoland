@@ -8,6 +8,7 @@ import com.housing.recoland.beans.LatLong;
 import com.housing.recoland.db.models.HotelDetails;
 import com.housing.recoland.db.models.LandDetails;
 import com.housing.recoland.db.models.TheaterDetails;
+import com.housing.recoland.db.models.UserRating;
 
 public class RatingCalculator {
 
@@ -40,6 +41,8 @@ public class RatingCalculator {
             return 0.0;
         }
         double averageScore = score / hotelCount;
+        averageScore = averageScore * hotelCount / 3;
+        averageScore = Math.min(averageScore, 100.0);
         return (averageScore / 100) * 3;
     }
 
@@ -56,7 +59,10 @@ public class RatingCalculator {
         if (theaterCount == 0) {
             return 0.0;
         }
+
         double averageScore = score / theaterCount;
+        averageScore = averageScore * theaterCount / 3; //3 is a threshold value - minimum number of theaters required in a locality
+        averageScore = Math.min(averageScore, 100.0);
         return (averageScore / 100) * 3;
     }
 
@@ -74,4 +80,24 @@ public class RatingCalculator {
         score *= 2;
         score /= latLongList.size();
         return (score / 100) * 4;
-    }}
+    }
+
+    public static double getUserRating(List<UserRating> userRatings, LandDetails landDetails) {
+        double sum = 0.0;
+        int count = 0;
+        for (UserRating userRating : userRatings) {
+            if (userRating.getLatitude().equals(landDetails.getLatitude()) && userRating.getLongitude().equals(landDetails.getLongitude())) {
+                sum += userRating.getRating();
+                count++;
+            }
+        }
+        if (count == 0) {
+            return 3;
+        }
+        double averageScore = sum / count;
+        averageScore = averageScore * count / 2;
+        averageScore = Math.min(averageScore, 10.0);
+        return averageScore;
+    }
+}
+

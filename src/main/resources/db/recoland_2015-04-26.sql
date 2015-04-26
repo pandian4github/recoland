@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.6.19)
 # Database: recoland
-# Generation Time: 2015-04-25 18:59:45 +0000
+# Generation Time: 2015-04-26 04:29:02 +0000
 # ************************************************************
 
 
@@ -263,6 +263,36 @@ VALUES
 	(2,'vishnu','Vishnu','vishnu.jay@gmail.com','9887675645','abcdef');
 
 /*!40000 ALTER TABLE `user_details` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+# Dump of table user_rating
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `user_rating`;
+
+CREATE TABLE `user_rating` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `username` varchar(100) DEFAULT NULL,
+  `latitude` double DEFAULT NULL,
+  `longitude` double DEFAULT NULL,
+  `rating` double DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+LOCK TABLES `user_rating` WRITE;
+/*!40000 ALTER TABLE `user_rating` DISABLE KEYS */;
+
+INSERT INTO `user_rating` (`id`, `username`, `latitude`, `longitude`, `rating`)
+VALUES
+	(1,'pandian',12.9285804,77.6094547,7.5),
+	(2,'vishnu',12.9285804,77.6094547,8.2),
+	(3,'vishnu',12.9252342,77.6097444,8.5),
+	(4,'pandian',12.953251,77.7037865,7),
+	(5,'pandian',12.9351304,77.6953537,8),
+	(6,'vishnu',12.9351304,77.6953537,6.5);
+
+/*!40000 ALTER TABLE `user_rating` ENABLE KEYS */;
 UNLOCK TABLES;
 
 

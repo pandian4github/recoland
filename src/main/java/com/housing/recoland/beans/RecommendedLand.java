@@ -15,6 +15,7 @@ public class RecommendedLand {
     private List<GeoLocationDist> geoLocationDists;
     private List<HotelDetails> hotelDetailsList;
     private List<TheaterDetails> theaterDetailsList;
+    Double userRating;
 
     public RecommendedLand() {
     }
@@ -26,6 +27,16 @@ public class RecommendedLand {
         this.geoLocationDists = geoLocationDists;
         this.hotelDetailsList = hotelDetailsList;
         this.theaterDetailsList = theaterDetailsList;
+    }
+
+    public RecommendedLand(LandDetails landDetails, Double score, List<GeoLocationDist> geoLocationDists,
+                           List<HotelDetails> hotelDetailsList, List<TheaterDetails> theaterDetailsList, Double userRating) {
+        this.landDetails = landDetails;
+        this.score = score;
+        this.geoLocationDists = geoLocationDists;
+        this.hotelDetailsList = hotelDetailsList;
+        this.theaterDetailsList = theaterDetailsList;
+        this.userRating = userRating;
     }
 
     public LandDetails getLandDetails() {
@@ -66,5 +77,13 @@ public class RecommendedLand {
 
     public void setTheaterDetailsList(List<TheaterDetails> theaterDetailsList) {
         this.theaterDetailsList = theaterDetailsList;
+    }
+
+    public Double getUserRating() {
+        return userRating;
+    }
+
+    public void setUserRating(Double userRating) {
+        this.userRating = userRating;
     }
 }
