@@ -26,6 +26,9 @@ public class RecoLandService {
                     browseHistory.getLongitude()));
         }
 
+        if (landDetailsList.size() == 0) {
+            landDetailsList = new HashSet<LandDetails>(DBUtils.getLandDetails());
+        }
         List<FoodHistory> foodHistoryList = DBUtils.getFoodHistory(username);
         List<MovieHistory> movieHistoryList = DBUtils.getMovieHistory(username);
         List<BrowseHistory> browseHistoryList = DBUtils.getBrowseHistory(username);
@@ -117,4 +120,7 @@ public class RecoLandService {
         return JsonUtils.DEFAULT.toJson(responseMap);
     }
 
+    public static void main(String[] args) throws SQLException, ClassNotFoundException {
+        System.out.println(getRecommendedLands("vignesh"));
+    }
 }
